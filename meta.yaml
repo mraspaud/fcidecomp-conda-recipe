@@ -1,0 +1,35 @@
+{% set version = "1.0.2" %}
+
+package:
+  name: fcidecomp
+  version: {{ version }}
+
+source:
+  url: ftp://ftp.eumetsat.int/pub/OPS/out/test-data/Test-data-for-External-Users/MTG_FCI_Test-Data/FCI_Decompression_Software_V{{ version }}/EUMETSAT-FCIDECOMP_V{{ version }}.tar.gz
+  sha256: c5f8d04cb55e85fdf975624e37a58dd1863e47a937c29f92641f0cacf6f70bf8
+  patches:
+
+build:
+  number: 5
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - cmake
+  host:
+    - charls=1.0
+    - zlib
+    - hdf5>=1.10.5
+  run:
+    - charls=1.0
+    - hdf5>=1.10.5
+
+about:
+  home: https://eumetsat.int
+  license: EUMETSAT
+  license_family: NONE
+  summary: 'FCIDECOMP'
+
+extra:
+  recipe-maintainers:
+    - mraspaud
